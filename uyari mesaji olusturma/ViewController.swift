@@ -20,6 +20,19 @@ class ViewController: UIViewController {
     
 
     @IBAction func signUpTiklandi(_ sender: Any) {
+        
+        let uyariMesaji = UIAlertController(title: "Hata Mesajı", message: "e mail yanlış girildi", preferredStyle: UIAlertController.Style.alert) // Style.alert yerine ActionSheet de yapabilirdik.
+        
+        // UYARININ İÇİNE BUTON EKLİYERUZ
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { UIAlertAction in
+            // Okey butonuna tıklanınca olacakları buraya yazarız
+            print("Okey butonu tıklandi")
+            // Ek bilgi olarka Style.default yerine kullanıcı deneyimi açısından defaulttan farklı üç seçenekten biri girilebilir.
+        }
+        uyariMesaji.addAction(okButton)// uyarı mesajına buton eklendi(aksiyon olarak)
+        
+        self.present(uyariMesaji, animated: true, completion: nil) /* self.present yaparak uyarımesajını kullanıcıya gösterdik
+            animated true diyerek animasyon eklendi completion nu ise nil diyerek boş bıraktık*/
     }
     
 }
