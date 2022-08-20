@@ -23,65 +23,37 @@ class ViewController: UIViewController {
         
         if emailTextField.text == "" {
             // email ini girmemişsin
-            let uyariMesaji = UIAlertController(title: "Hata Mesajı", message: "e mail yanlış girildi", preferredStyle: UIAlertController.Style.alert) // Style.alert yerine ActionSheet de yapabilirdik.
-            
-            // UYARININ İÇİNE BUTON EKLİYERUZ
-            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { UIAlertAction in
-                // Okey butonuna tıklanınca olacakları buraya yazarız
-                print("Okey butonu tıklandi")
-                // Ek bilgi olarka Style.default yerine kullanıcı deneyimi açısından defaulttan farklı üç seçenekten biri girilebilir.
-            }
-            uyariMesaji.addAction(okButton)// uyarı mesajına buton eklendi(aksiyon olarak)
-            
-            self.present(uyariMesaji, animated: true, completion: nil) /* self.present yaparak uyarımesajını kullanıcıya gösterdik
-                animated true diyerek animasyon eklendi completion nu ise nil diyerek boş bıraktık*/
+            alertOlustur(titleGirdisi: "Hata", mesajGirdisi: "email ini girmemişsin")
             
         } else if passwordTextField.text == "" {
             // parolanı girmemişsin
-            let uyariMesaji = UIAlertController(title: "Hata Mesajı", message: " parola yanlış girildi", preferredStyle: UIAlertController.Style.alert) // Style.alert yerine ActionSheet de yapabilirdik.
-            
-            // UYARININ İÇİNE BUTON EKLİYERUZ
-            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { UIAlertAction in
-                // Okey butonuna tıklanınca olacakları buraya yazarız
-                print("Okey butonu tıklandi")
-                // Ek bilgi olarka Style.default yerine kullanıcı deneyimi açısından defaulttan farklı üç seçenekten biri girilebilir.
-            }
-            uyariMesaji.addAction(okButton)// uyarı mesajına buton eklendi(aksiyon olarak)
-            
-            self.present(uyariMesaji, animated: true, completion: nil) /* self.present yaparak uyarımesajını kullanıcıya gösterdik
-                animated true diyerek animasyon eklendi completion nu ise nil diyerek boş bıraktık*/
+            alertOlustur(titleGirdisi: "Hata", mesajGirdisi: "Parolanı girmemişsin")
+           
         } else if passwordTextField.text != password2TextField.text {
             // parolalar uyuşmuyor
-            
-            let uyariMesaji = UIAlertController(title: "Hata Mesajı", message: "parolalar uyuşmuyor", preferredStyle: UIAlertController.Style.alert) // Style.alert yerine ActionSheet de yapabilirdik.
-            
-            // UYARININ İÇİNE BUTON EKLİYERUZ
-            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { UIAlertAction in
-                // Okey butonuna tıklanınca olacakları buraya yazarız
-                print("Okey butonu tıklandi")
-                // Ek bilgi olarka Style.default yerine kullanıcı deneyimi açısından defaulttan farklı üç seçenekten biri girilebilir.
-            }
-            uyariMesaji.addAction(okButton)// uyarı mesajına buton eklendi(aksiyon olarak)
-            
-            self.present(uyariMesaji, animated: true, completion: nil) /* self.present yaparak uyarımesajını kullanıcıya gösterdik
-                animated true diyerek animasyon eklendi completion nu ise nil diyerek boş bıraktık*/
+            alertOlustur(titleGirdisi: "Hata", mesajGirdisi: "Parolalar uyuşmuyor")
+           
         } else {
             // başarıyla kaydettik
+            alertOlustur(titleGirdisi: "Başarılı", mesajGirdisi: "Kullanıcı kaydı oluşturuldu")
             
-            let uyariMesaji = UIAlertController(title: "Başarılı", message: "Kullanıcı Kaydı Oluşturuldu", preferredStyle: UIAlertController.Style.alert) // Style.alert yerine ActionSheet de yapabilirdik.
-            
-            // UYARININ İÇİNE BUTON EKLİYERUZ
-            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { UIAlertAction in
-                // Okey butonuna tıklanınca olacakları buraya yazarız
-                print("Okey butonu tıklandi")
-                // Ek bilgi olarka Style.default yerine kullanıcı deneyimi açısından defaulttan farklı üç seçenekten biri girilebilir.
-            }
-            uyariMesaji.addAction(okButton)// uyarı mesajına buton eklendi(aksiyon olarak)
-            
-            self.present(uyariMesaji, animated: true, completion: nil) /* self.present yaparak uyarımesajını kullanıcıya gösterdik
-                animated true diyerek animasyon eklendi completion nu ise nil diyerek boş bıraktık*/
         }
+    }
+    //Sürekli aynı kodları tekrar etmemek için alert fonksiyonu oluşturuyoruz.
+    func alertOlustur(titleGirdisi: String,mesajGirdisi: String){
         
+        let uyariMesaji = UIAlertController(title: titleGirdisi, message: mesajGirdisi, preferredStyle: UIAlertController.Style.alert) // Style.alert yerine ActionSheet de yapabilirdik.
+        
+        // UYARININ İÇİNE BUTON EKLİYERUZ
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { UIAlertAction in
+            // Okey butonuna tıklanınca olacakları buraya yazarız
+            print("Okey butonu tıklandi")
+            // Ek bilgi olarka Style.default yerine kullanıcı deneyimi açısından defaulttan farklı üç seçenekten biri girilebilir.
+        }
+        uyariMesaji.addAction(okButton)// uyarı mesajına buton eklendi(aksiyon olarak)
+        
+        self.present(uyariMesaji, animated: true, completion: nil) /* self.present yaparak uyarımesajını kullanıcıya gösterdik
+            animated true diyerek animasyon eklendi completion nu ise nil diyerek boş bıraktık*/
         
     }
     
